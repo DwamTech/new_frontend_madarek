@@ -1,0 +1,253 @@
+@import "tailwindcss";
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+/* ===== توكنات «التذهيب الرقمي» ===== */
+:root {
+  --paper: #faf6ee;
+  --surface: #f2ebdd;
+  --raise: #ffffff;
+  --line: #e2d6c0;
+  --ink: #2a1d10;
+  /* رمادي دافئ محايد بدل الزيتوني (كان H:40° S:28% — يقرأ موحلًا في
+     التواريخ والبيانات الوصفية). أُخذ اتجاه الحياد من نظام منصة مدارك
+     (H:25°) مع إبقاء دفء طفيف يوافق حرارة الجلدي/الحبر هنا (H:27°) */
+  --soft: #6b5f55;
+  --focus: #1f6f6b;
+  --leather: #6e3a21;
+  --leather-2: #54291a;
+  --leather-soft: #f0e0d4;
+  --gold: #a97d2e;
+  --gold-soft: #efe0bc;
+  --lapis: #2c5170;
+  --lapis-soft: #dfe8ef;
+  --okay: #3e7a4e;
+  --okay-soft: #dfebe2;
+  --danger: #9c3325;
+  --danger-soft: #f2dfdb;
+
+  /* أصباغ الأبواب — من علبة ألوان المذهِّب: لازورد، نيلة، ملكيت، زنجفر،
+     مغرة، فوّة. تُستعمل للأبواب حصرًا (أيقونة وشارة وخط رفيع)،
+     ولا تدخل الكروم ولا الأزرار ولا الروابط. */
+  --pig-house: #6e3a21;
+  --pig-house-soft: #f0e0d4;
+  --pig-lapis: #2c5170;
+  --pig-lapis-soft: #dfe8ef;
+  --pig-indigo: #3f4a8c;
+  --pig-indigo-soft: #e1e3f3;
+  --pig-plum: #6d3a6e;
+  --pig-plum-soft: #efe0ef;
+  --pig-teal: #1f6f6b;
+  --pig-teal-soft: #d9ebea;
+  --pig-malachite: #376b45;
+  --pig-malachite-soft: #dfebe2;
+  --pig-vermilion: #a33b2a;
+  --pig-vermilion-soft: #f4ddd8;
+  --pig-ochre: #7b5e1a;
+  --pig-ochre-soft: #efe4c8;
+  --pig-olive: #5f5f1f;
+  --pig-olive-soft: #e8e8cd;
+  --pig-madder: #96305a;
+  --pig-madder-soft: #f3dbe5;
+
+  /* توقيت الكشف التدريجي (Reveal) — مصدر واحد بدل تكرار الأرقام
+     في قاعدتين (opacity وtransform) داخل نفس الكتلة */
+  --motion-reveal-duration: 0.55s;
+  --motion-reveal-easing: cubic-bezier(0.22, 1, 0.36, 1);
+  --motion-reveal-distance: 10px;
+}
+
+.dark {
+  --paper: #171009;
+  --surface: #221910;
+  --raise: #2b2013;
+  --line: #41331f;
+  --ink: #f0e6d2;
+  --soft: #b3a89a;
+  --focus: #6bb8b3;
+  --leather: #c08856;
+  --leather-2: #241708;
+  --leather-soft: rgba(51, 36, 22, 0.55);
+  --gold: #d2a455;
+  --gold-soft: #3a2c15;
+  --lapis: #8fb3d3;
+  --lapis-soft: #1e2c38;
+  --okay: #7cb48a;
+  --okay-soft: #1e2e22;
+  --danger: #d98874;
+  --danger-soft: #3a211b;
+
+  /* الأصباغ في الوضع الليلي: الصبغة تُفتَّح لتقرأ على الورق الداكن،
+     والخلفية الخفيفة تُعتَّم إلى نفس الصبغة مطفأة */
+  --pig-house: #c08856;
+  --pig-house-soft: #33241680;
+  --pig-lapis: #8fb3d3;
+  --pig-lapis-soft: #1e2c38;
+  --pig-indigo: #9aa4de;
+  --pig-indigo-soft: #1f2138;
+  --pig-plum: #c48cc5;
+  --pig-plum-soft: #2e1e2f;
+  --pig-teal: #6bb8b3;
+  --pig-teal-soft: #16302e;
+  --pig-malachite: #7cb48a;
+  --pig-malachite-soft: #1e2e22;
+  --pig-vermilion: #dd8b78;
+  --pig-vermilion-soft: #38201b;
+  --pig-ochre: #cfad5d;
+  --pig-ochre-soft: #302716;
+  --pig-olive: #b4b46d;
+  --pig-olive-soft: #2a2a15;
+  --pig-madder: #dd8caf;
+  --pig-madder-soft: #351d28;
+}
+
+@theme inline {
+  --color-paper: var(--paper);
+  --color-surface: var(--surface);
+  --color-raise: var(--raise);
+  --color-line: var(--line);
+  --color-ink: var(--ink);
+  --color-soft: var(--soft);
+  --color-focus: var(--focus);
+  --color-leather: var(--leather);
+  --color-leather-2: var(--leather-2);
+  --color-leather-soft: var(--leather-soft);
+  --color-gold: var(--gold);
+  --color-gold-soft: var(--gold-soft);
+  --color-lapis: var(--lapis);
+  --color-lapis-soft: var(--lapis-soft);
+  --color-okay: var(--okay);
+  --color-okay-soft: var(--okay-soft);
+  --color-danger: var(--danger);
+  --color-danger-soft: var(--danger-soft);
+
+  --font-head: var(--font-plex), "Segoe UI", Tahoma, system-ui, sans-serif;
+  --font-naskh: var(--font-noto-naskh), "Sakkal Majalla", "Traditional Arabic", serif;
+  --font-amiri: var(--font-amiri-v), "Sakkal Majalla", "Traditional Arabic", serif;
+
+  --shadow-warm: 0 1px 2px rgba(63, 42, 20, 0.06), 0 8px 28px rgba(63, 42, 20, 0.09);
+}
+
+body {
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--font-plex), "Segoe UI", Tahoma, system-ui, sans-serif;
+}
+
+::selection {
+  background: var(--gold-soft);
+}
+
+h2[id],
+h3[id] {
+  scroll-margin-top: 6rem;
+}
+
+:focus-visible {
+  /* لون مستقل عن الذهبي — الذهبي زخرفة تحريرية (ornament, mark, ornament
+     الرأس) لا إشارة حالة، فخلطه بحلقة التركيز يُضعف قراءتها كتركيز */
+  outline: 2px solid var(--focus);
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+/* جسم المقال — نمط القراءة */
+.prose-madarek {
+  font-family: var(--font-noto-naskh), "Sakkal Majalla", "Traditional Arabic", serif;
+  font-size: calc(1.1875rem * var(--reading-scale, 1));
+  line-height: 2;
+}
+.prose-madarek p {
+  margin-bottom: 1.25em;
+  text-align: right;
+}
+.prose-madarek h2,
+.prose-madarek h3,
+.prose-madarek h4 {
+  font-family: var(--font-plex), "Segoe UI", sans-serif;
+  font-weight: 700;
+  margin: 1.6em 0 0.6em;
+}
+.prose-madarek h2 {
+  font-size: 1.3em;
+}
+.prose-madarek h3 {
+  font-size: 1.15em;
+}
+.prose-madarek blockquote {
+  margin: 1.5em 0;
+  border-inline-start: 3px solid var(--gold);
+  background: var(--surface);
+  border-radius: 8px;
+  padding: 1em 1.5em;
+  font-family: var(--font-amiri-v), "Sakkal Majalla", serif;
+}
+.prose-madarek ul,
+.prose-madarek ol {
+  margin: 0 1.25em 1.25em 0;
+  padding-inline-start: 1.25em;
+}
+.prose-madarek ul {
+  list-style: disc;
+}
+.prose-madarek ol {
+  list-style: arabic-indic;
+}
+.prose-madarek li {
+  margin-bottom: 0.4em;
+}
+.prose-madarek a {
+  color: var(--lapis);
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
+/* التمييز التحريري الذهبي — كما يظهر في النظام القديم (آيات، أحاديث، نقول) */
+.prose-madarek mark {
+  background: transparent;
+  color: var(--gold);
+  font-weight: 600;
+}
+.prose-madarek img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 12px;
+  margin: 1.5em auto;
+}
+.prose-madarek table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 1.5em 0;
+  font-family: var(--font-plex), sans-serif;
+  font-size: 0.8em;
+}
+.prose-madarek th,
+.prose-madarek td {
+  border: 1px solid var(--line);
+  padding: 0.6em 0.9em;
+  text-align: right;
+}
+.prose-madarek th {
+  background: var(--surface);
+  font-weight: 700;
+}
+
+/* كشف تدريجي عند التمرير — الحالة المخفية تُفعّل فقط عندما تكون html.js
+   موجودة (فلا يختفي المحتوى دون جافاسكربت). تفضيل تقليل الحركة يُحترم
+   داخل مكوّن Reveal نفسه (يكشف فورًا بلا حركة).
+   opacity/transform فقط: لا انزياح تخطيط ولا أثر على الفهرسة */
+html.js [data-reveal] {
+  transition:
+    opacity var(--motion-reveal-duration) var(--motion-reveal-easing),
+    transform var(--motion-reveal-duration) var(--motion-reveal-easing);
+  transition-delay: var(--reveal-delay, 0ms);
+}
+html.js [data-reveal]:not(.is-revealed) {
+  opacity: 0;
+  transform: translateY(var(--motion-reveal-distance));
+}
+
+/* زخرفة خافتة لرؤوس الصفحات */
+.ornament {
+  background-image: radial-gradient(circle at 1px 1px, var(--gold) 1.2px, transparent 0);
+  background-size: 22px 22px;
+}
